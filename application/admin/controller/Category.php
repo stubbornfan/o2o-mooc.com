@@ -4,12 +4,20 @@ use think\Controller;
 
 class Category extends Controller
 {
+    private $obj = '';
+    public function _initialize() {
+        $this->obj = model('Category');
+    }
+
     public function index()
     {
         return $this->fetch();
     }
     public function add(){
-        return $this->fetch();
+        $categorys = $this->obj->getNormalFirstCategory();
+        return $this->fetch('',[
+            'categorys'=>$categorys,
+        ]);
     }
     
     public function save()
@@ -21,7 +29,7 @@ class Category extends Controller
         }
         
         //提交数据到model层
-        $res = model('Category')->add($data);
+        $res = $this->obj->add($data);
         if($res){
             $this->success('新增成功');
         } else {
