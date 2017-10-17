@@ -1,7 +1,20 @@
 <?php
 namespace app\admin\controller;
-
-class Category
+use think\Controller;
+class Category extends Controller
 {
+    public function index()
+    {
+        return $this->fetch();
+    }
+    public function add()
+    {
+        return $this->fetch();
+    }
+    
+    public function save()
+    {
+        return $this->fetch();
+    }
 
 }
